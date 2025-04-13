@@ -1,5 +1,18 @@
 [![Build Status](https://github.com/pmeaney/portfolio-payloadcms/actions/workflows/z-main.yml/badge.svg)](https://github.com/pmeaney/portfolio-payloadcms/actions/workflows/z-main.yml)
 
+---
+
+Current focus: Getting sync-from-prod process working.
+
+Key commands-- ideally, handled by the sync-from-prod.sh script
+
+- download the migration & media files
+- migrate fresh from within the payloadcms container: `docker exec -i payloadcms-dev-portfolio2025 sh -c "pnpm run payload:migrate:fresh"`
+- restore the db from the backup .sql file: (update the sql filename to the most recent or relevant)
+ `cat "./sync-from-prod--related-files/sync-to-prod--db-backups/payload_backup_data_20250413_153241.sql" | docker exec -i pg-dev-payloadcms psql -U payloadcms-user -d payloadcms-db`
+
+---
+
 # Dockerized PayloadCMS + Postgres Portfolio Project Template
 
 This project is a CICD Deployment Template of the Official PayloadCMS Website Template.
@@ -122,13 +135,6 @@ You might also want to run a docker prune to delete and related docker assets (e
 
 So, not to worry-- the CICD workflow will create the assets it needs if they don't exist.  For a fresh deploy, delete all project assets and simply re-commit to the project repo to activate the CICD workflow.
 
-
-# To Do
-
-- [X] Setup CICD to deploy prod version to remote server
-- [ ] Setup migration scheme
-  - [ ] Production-first.  Will run initial migration on remote.  Then, will pull those files to local and commit them.  And periodically will download the data as well:
-    - Setup a methodology (e.g. shell script) for Periodic Database Dumps and Restores, so local dev env has same data as remote prod env.
 
 ## Resources
 
