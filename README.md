@@ -4,7 +4,7 @@
 Current focus:
 
 - Recently finished the `sync-from-prod.sh`-- it's working-- pulls migration, database data, & media into local dev environment.
-- Next I'll setup the project up as a blue/green deployment.
+- Next I'll setup the project up as a blue/green deployment-- But, that will actually be the currently under-edit copy of this template (https://github.com/pmeaney/portfolio-payloadcms).
 
 ---
 
