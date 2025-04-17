@@ -1,17 +1,10 @@
-## Template -- Apr 13, 2025
-
-[![Build Status](https://github.com/pmeaney/template-portfolio-payloadcms/actions/workflows/z-main.yml/badge.svg)](https://github.com/pmeaney/template-portfolio-payloadcms/actions/workflows/z-main.yml)
 
 ---
 
-Current focus: Getting sync-from-prod process working.
+Current focus:
 
-Key commands-- ideally, handled by the sync-from-prod.sh script
-
-- download the migration & media files
-- migrate fresh from within the payloadcms container: `docker exec -i payloadcms-dev-portfolio2025 sh -c "pnpm run payload:migrate:fresh"`
-- restore the db from the backup .sql file: (update the sql filename to the most recent or relevant)
- `cat "./sync-from-prod--related-files/sync-to-prod--db-backups/payload_backup_data_20250413_153241.sql" | docker exec -i pg-dev-payloadcms psql -U payloadcms-user -d payloadcms-db`
+- Recently finished the `sync-from-prod.sh`-- it's working-- pulls migration, database data, & media into local dev environment.
+- Next I'll setup the project up as a blue/green deployment.
 
 ---
 
